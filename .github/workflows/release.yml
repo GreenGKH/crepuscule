@@ -1,0 +1,25 @@
+# Pousser un tag (ex. v1.0.0) compile Crepuscule.exe et publie une Release avec l'exe attaché.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Compiler
+        shell: powershell
+        run: .\build.ps1
+
+      - name: Publier la Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: Crepuscule.exe
+          generate_release_notes: true

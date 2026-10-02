@@ -1,0 +1,3 @@
+# Produits par build.ps1 : distribués via les Releases GitHub, pas dans le dépôt
+*.exe
+*.ico
